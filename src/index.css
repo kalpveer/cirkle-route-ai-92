@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cirkle Design System - Dark theme with glassmorphism and neon effects */
+
+@layer base {
+  :root {
+    /* Dark theme base colors */
+    --background: 220 15% 4%;
+    --foreground: 210 40% 98%;
+
+    /* Glass morphism backgrounds */
+    --card: 220 15% 8%;
+    --card-foreground: 210 40% 98%;
+    
+    --glass: 220 15% 12%;
+    --glass-border: 220 15% 20%;
+
+    /* Primary brand colors - Teal/Blue gradient */
+    --primary: 189 100% 56%;
+    --primary-glow: 189 100% 70%;
+    --primary-foreground: 220 15% 4%;
+
+    /* Secondary - Deep blue */
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent - Bright teal */
+    --accent: 180 100% 60%;
+    --accent-glow: 180 100% 75%;
+    --accent-foreground: 220 15% 4%;
+
+    /* UI elements */
+    --border: 220 15% 20%;
+    --input: 220 15% 12%;
+    --ring: 189 100% 56%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --warning: 45 93% 60%;
+    --warning-foreground: 220 15% 4%;
+
+    /* Glassmorphism gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(189 100% 56%), hsl(180 100% 60%));
+    --gradient-glass: linear-gradient(135deg, hsl(220 15% 12% / 0.6), hsl(220 15% 8% / 0.8));
+    --gradient-glow: linear-gradient(135deg, hsl(189 100% 56% / 0.3), hsl(180 100% 60% / 0.3));
+    
+    /* Shadows and glows */
+    --shadow-glow: 0 0 40px hsl(189 100% 56% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(220 15% 4% / 0.4);
+    --shadow-elevated: 0 20px 60px hsl(220 15% 4% / 0.6);
+
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: box-shadow 0.3s ease, transform 0.2s ease;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Dark mode is the default, keeping same values */
+    --background: 220 15% 4%;
+    --foreground: 210 40% 98%;
+    --card: 220 15% 8%;
+    --card-foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-raleway;
+    background: linear-gradient(135deg, hsl(220 15% 4%), hsl(220 15% 6%));
+    min-height: 100vh;
+  }
+}
+
+/* Custom utility classes for Cirkle */
+@layer utilities {
+  .glass {
+    @apply bg-glass/60 backdrop-blur-xl border border-glass-border;
+    background: linear-gradient(135deg, hsl(var(--glass) / 0.6), hsl(var(--glass) / 0.4));
+  }
+  
+  .glass-hover {
+    @apply hover:bg-glass/80 hover:border-glass-border/80;
+    transition: var(--transition-smooth);
+  }
+  
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+  
+  .animate-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+}
+
+/* Custom animations */
+@keyframes pulse-glow {
+  from {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+  }
+  to {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.4);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
